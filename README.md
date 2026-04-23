@@ -320,3 +320,46 @@ gcc main.c ntlm_parser.c -o ntlm_example
 ```bash
 ./ntlm_example
 ```
+
+### Result Example
+
+```
+TLM Message Type: 3
+Header Field LmChallengeResponseFields:
+  len: 24
+  max_len: 24
+  buffer_offset: 88
+Header Field NtChallengeResponseFields:
+  len: 310
+  max_len: 310
+  buffer_offset: 112
+Header Field DomainNameFields:
+  len: 18
+  max_len: 18
+  buffer_offset: 422
+Header Field UserNameFields:
+  len: 6
+  max_len: 6
+  buffer_offset: 440
+Header Field WorkstationFields:
+  len: 34
+  max_len: 34
+  buffer_offset: 446
+Header Field EncryptedRandomSessionKeyFields:
+  len: 16
+  max_len: 16
+  buffer_offset: 480
+NtChallengeResponse (NTLM_V2):
+AV Pairs [8]:
+  AV ID: 0x0002, Len: 8, Value: 8NII
+  AV ID: 0x0001, Len: 30, Value: WIN-1FX4UMPS4TB
+  AV ID: 0x0004, Len: 52, Value: WIN-1FX4UMPS4TB.8NII.LOCAL
+  AV ID: 0x0003, Len: 20, Value: 8NII.LOCAL
+  AV ID: 0x0005, Len: 20, Value: 8NII.LOCAL
+  AV ID: 0x0008, Len: 48, Value: 30 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 45 09 2b 4f 13 3a c9 cf 9f b6 47 dc 6c a6 4f 41 8a 12 ff b0 a6 57 d2 b9 5b d6 7d 7f c9 a2 ac 8f 
+  AV ID: 0x000a, Len: 16, Value: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+  AV ID: 0x0009, Len: 36, Value: cifs/192.168.42.26
+DomainName: WORKGROUP
+UserName: a14
+Workstation: KALILINUX-2023-02
+```
