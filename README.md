@@ -90,7 +90,7 @@ The client responds with its mechanisms and includes the first NTLM payload ("op
 * `0xXX`: Length.
 * `0x04`: Standard ASN.1 tag for **OCTET STRING**. (Here ASN.1 ends).
 * `0xXX`: Length.
-* `0x4e 0x54 0x4c 0x4d 0x53 0x53 0x50 0x00`: ("NTLMSSP\0"). Start of NTLM Type 1 packet (Little-Endian).
+* `0x4e 0x54 0x4c 0x4d 0x53 0x53 0x50 0x00`: ("NTLMSSP\0"). Start of NTLM Type 1 packet (Little-Endian) [[MS-NLMP]](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-nlmp/b34032e5-3aae-4bc6-84c3-c6d80eadf7f2).
   * **Message Type:** NTLMSSP_NEGOTIATE (`0x01 0x00 0x00 0x00`).
   * **Flags:** 4 bytes (e.g., `0x15 0x82 0x08 0x62`).
   * **WorkStation domain & name:** Header format (2 bytes length, 2 bytes maxlen, 4 bytes offset).
@@ -108,7 +108,7 @@ The server sends the cryptographic "challenge". We no longer use `negTokenInit` 
 * `0xa2`: `responseToken` (NTLM packet container).
 * `0x04`: OCTET STRING (End of ASN.1).
 
-**Payload NTLMSSP_CHALLENGE (NTLM Type 2):**
+**Payload NTLMSSP_CHALLENGE (NTLM Type 2) [[MS-NLMP]](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-nlmp/801a4681-8809-4be9-ab0d-61dcfe762786):**
 * `0x4e 0x54...`: "NTLMSSP\0".
 * `0x02 0x00 0x00 0x00`: Message Type (NTLMSSP_CHALLENGE).
 * **Target Name:** Standard header (Len, MaxLen, Offset).
@@ -129,7 +129,7 @@ The client responds to the challenge proving it knows the password.
 * `0xa2`: `responseToken`.
 * `0x04`: OCTET STRING (End of ASN.1).
 
-**Payload NTLMSSP_AUTH (NTLM Type 3):**
+**Payload NTLMSSP_AUTH (NTLM Type 3) [[MS-NLMP]](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-nlmp/033d32cc-88f9-4483-9bf2-b273055038ce):**
 * `0x4e 0x54...`: "NTLMSSP\0".
 * `0x03 0x00 0x00 0x00`: Message Type (NTLMSSP_AUTH).
 * **Multiple Headers:** (Len, MaxLen, Offset) for LM Response, NTLM Response, Domain Name, UserName, Hostname, Session Key.
